@@ -16,19 +16,26 @@ class Student(SerializationMixin, SearchMixin, LoggingMixin, ValidationMixin, gr
         Total_marks = sum(self.marks.values())
         Average_marks = Total_marks / len(self.marks)
         letter_grade = self.grade_allocator(Average_marks)
+
         if letter_grade  == 'A':
             print(f"Excellent performance! , Grade: {letter_grade}")
+
         elif letter_grade == 'B':
             print(f"Good job! , Grade: {letter_grade}")
+
         elif letter_grade == 'C':
             print(f"Average performance. , Grade: {letter_grade}")
+
         elif letter_grade == 'D':
             print(f"Below average performance. , Grade: {letter_grade}")
+
         elif letter_grade == 'F':
             print(f"Failing performance. , Grade: {letter_grade}")
-        else:
+
+        else :
             print(f"Invalid grade. , Grade: {letter_grade}")
 
+        return letter_grade
 
 class Course(SerializationMixin, SearchMixin, LoggingMixin):
     def __init__(self, course_id, course_name):
@@ -45,9 +52,11 @@ student1 = Student(Student_ID=1, name="Ishmael Chesire", age=20,
                           "COM404E": 60,
                           "BIT413": 92,
                           "COM416": 45,
-                          "COM450": 25
+                          "COM450": 40
                    }
                    )
 print(student1.to_dict())
+print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 print(student1.to_json())
+print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 print(student1.grade_calculations())
